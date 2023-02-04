@@ -7,18 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7809C079298F017D00243683 /* MyImageCoreDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809C078298F017D00243683 /* MyImageCoreDataApp.swift */; };
-		7809C07B298F017D00243683 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809C07A298F017D00243683 /* ContentView.swift */; };
+		7809C079298F017D00243683 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809C078298F017D00243683 /* AppEntry.swift */; };
+		7809C07B298F017D00243683 /* MyImagesGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809C07A298F017D00243683 /* MyImagesGridView.swift */; };
 		7809C07D298F017E00243683 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7809C07C298F017E00243683 /* Assets.xcassets */; };
 		7809C080298F017E00243683 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7809C07F298F017E00243683 /* Preview Assets.xcassets */; };
+		7809C089298F02E500243683 /* MyImagesDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7809C087298F02E500243683 /* MyImagesDataModel.xcdatamodeld */; };
+		7809C08B298F037400243683 /* MyImagesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809C08A298F037400243683 /* MyImagesContainer.swift */; };
+		7809C08D298F055700243683 /* MyImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809C08C298F055700243683 /* MyImage+Extension.swift */; };
+		7809C08F298F08A100243683 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809C08E298F08A100243683 /* ImagePicker.swift */; };
+		7809C092298F0CC200243683 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809C091298F0CC200243683 /* FormViewModel.swift */; };
+		7809C094298F0E7600243683 /* ImageFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809C093298F0E7600243683 /* ImageFormView.swift */; };
+		7809C096298F13FD00243683 /* FormType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809C095298F13FD00243683 /* FormType.swift */; };
+		7809C098298F158F00243683 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809C097298F158F00243683 /* FileManager+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7809C075298F017D00243683 /* MyImageCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyImageCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7809C078298F017D00243683 /* MyImageCoreDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageCoreDataApp.swift; sourceTree = "<group>"; };
-		7809C07A298F017D00243683 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7809C078298F017D00243683 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
+		7809C07A298F017D00243683 /* MyImagesGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesGridView.swift; sourceTree = "<group>"; };
 		7809C07C298F017E00243683 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7809C07F298F017E00243683 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7809C088298F02E500243683 /* MyImagesDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyImagesDataModel.xcdatamodel; sourceTree = "<group>"; };
+		7809C08A298F037400243683 /* MyImagesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagesContainer.swift; sourceTree = "<group>"; };
+		7809C08C298F055700243683 /* MyImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyImage+Extension.swift"; sourceTree = "<group>"; };
+		7809C08E298F08A100243683 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		7809C091298F0CC200243683 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
+		7809C093298F0E7600243683 /* ImageFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFormView.swift; sourceTree = "<group>"; };
+		7809C095298F13FD00243683 /* FormType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormType.swift; sourceTree = "<group>"; };
+		7809C097298F158F00243683 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +67,12 @@
 		7809C077298F017D00243683 /* MyImageCoreData */ = {
 			isa = PBXGroup;
 			children = (
-				7809C078298F017D00243683 /* MyImageCoreDataApp.swift */,
-				7809C07A298F017D00243683 /* ContentView.swift */,
+				7809C078298F017D00243683 /* AppEntry.swift */,
+				7809C07A298F017D00243683 /* MyImagesGridView.swift */,
+				7809C08E298F08A100243683 /* ImagePicker.swift */,
+				7809C097298F158F00243683 /* FileManager+Extension.swift */,
+				7809C090298F0CAB00243683 /* Form */,
+				7809C086298F028600243683 /* CoreData */,
 				7809C07C298F017E00243683 /* Assets.xcassets */,
 				7809C07E298F017E00243683 /* Preview Content */,
 			);
@@ -65,6 +85,26 @@
 				7809C07F298F017E00243683 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7809C086298F028600243683 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7809C087298F02E500243683 /* MyImagesDataModel.xcdatamodeld */,
+				7809C08A298F037400243683 /* MyImagesContainer.swift */,
+				7809C08C298F055700243683 /* MyImage+Extension.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		7809C090298F0CAB00243683 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				7809C091298F0CC200243683 /* FormViewModel.swift */,
+				7809C093298F0E7600243683 /* ImageFormView.swift */,
+				7809C095298F13FD00243683 /* FormType.swift */,
+			);
+			path = Form;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +177,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7809C07B298F017D00243683 /* ContentView.swift in Sources */,
-				7809C079298F017D00243683 /* MyImageCoreDataApp.swift in Sources */,
+				7809C094298F0E7600243683 /* ImageFormView.swift in Sources */,
+				7809C098298F158F00243683 /* FileManager+Extension.swift in Sources */,
+				7809C07B298F017D00243683 /* MyImagesGridView.swift in Sources */,
+				7809C08B298F037400243683 /* MyImagesContainer.swift in Sources */,
+				7809C089298F02E500243683 /* MyImagesDataModel.xcdatamodeld in Sources */,
+				7809C096298F13FD00243683 /* FormType.swift in Sources */,
+				7809C08F298F08A100243683 /* ImagePicker.swift in Sources */,
+				7809C092298F0CC200243683 /* FormViewModel.swift in Sources */,
+				7809C079298F017D00243683 /* AppEntry.swift in Sources */,
+				7809C08D298F055700243683 /* MyImage+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +387,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7809C087298F02E500243683 /* MyImagesDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7809C088298F02E500243683 /* MyImagesDataModel.xcdatamodel */,
+			);
+			currentVersion = 7809C088298F02E500243683 /* MyImagesDataModel.xcdatamodel */;
+			path = MyImagesDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7809C06D298F017D00243683 /* Project object */;
 }
