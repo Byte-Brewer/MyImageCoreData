@@ -10,16 +10,17 @@ import SwiftUI
 @main
 struct AppEntry: App {
     @StateObject var shareService = SharedService()
+    let moc = MyImagesContainer().persistantContainer.viewContext
     var body: some Scene {
         WindowGroup {
             MyImagesGridView()
-                .environment(
-                    \.managedObjectContext,
-                     MyImagesContainer().persistantContainer.viewContext
-                )
+                .environment(\.managedObjectContext, moc)
                 .environmentObject(shareService)
                 .onAppear {
                     myLogger.debug("path where located my document directory: \(URL.documentsDirectory.path)")
+                }
+                .onOpenURL { url in
+                    shareService.restore(url: url)
                 }
         }
     }

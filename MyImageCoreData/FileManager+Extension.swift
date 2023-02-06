@@ -54,4 +54,30 @@ extension FileManager {
             myLogger.error("Could not save url: \(url) \n with error: \(error.localizedDescription)")
         }
     }
+    
+    func decodeJSON(from url: URL) -> CodableImage? {
+        do {
+            let data = try Data(contentsOf: url)
+            do {
+                return try JSONDecoder().decode(CodableImage.self, from: data)
+            } catch {
+                myLogger.error("Could not decode data with error: \(error.localizedDescription)")
+                return nil
+            }
+        } catch {
+            myLogger.error("Could not take data from url: \(url)\n with error: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    func moveFile(oldURL: URL, newURL: URL) {
+        if fileExists(atPath: newURL.path) {
+            try? removeItem(at: newURL)
+        }
+        do {
+            try moveItem(at: oldURL, to: newURL)
+        } catch {
+            myLogger.error("Could not move url's: \(oldURL)\n \(newURL)\n with error: \(error.localizedDescription)")
+        }
+    }
 }
