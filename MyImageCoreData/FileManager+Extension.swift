@@ -45,4 +45,13 @@ extension FileManager {
             myLogger.error("Image does not exist")
         }
     }
+    
+    func saveJSON(_ json: String, fileName: String) {
+        let url = URL.documentsDirectory.appending(path: fileName)
+        do {
+            try json.write(to: url, atomically: false, encoding: .utf8)
+        } catch {
+            myLogger.error("Could not save url: \(url) \n with error: \(error.localizedDescription)")
+        }
+    }
 }

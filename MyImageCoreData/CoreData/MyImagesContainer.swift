@@ -16,6 +16,9 @@ class MyImagesContainer {
     
     init() {
         persistantContainer  = NSPersistentContainer(name: "MyImagesDataModel")
+        guard let path = persistantContainer.persistentStoreDescriptions.first?.url?.path
+        else { fatalError("Could not find persistant container") }
+        myLogger.log("Core Data, \(path)")
         persistantContainer.loadPersistentStores { _, error in
             if let error {
                 myLogger.error("Could not create 'MyImagesDataModel' with error: \(error.localizedDescription)")

@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct AppEntry: App {
+    @StateObject var shareService = SharedService()
     var body: some Scene {
         WindowGroup {
             MyImagesGridView()
@@ -16,8 +17,9 @@ struct AppEntry: App {
                     \.managedObjectContext,
                      MyImagesContainer().persistantContainer.viewContext
                 )
+                .environmentObject(shareService)
                 .onAppear {
-                    myLogger.debug("path where located my data: \(URL.documentsDirectory.path)")
+                    myLogger.debug("path where located my document directory: \(URL.documentsDirectory.path)")
                 }
         }
     }
