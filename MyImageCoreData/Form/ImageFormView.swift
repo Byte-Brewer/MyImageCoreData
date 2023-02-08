@@ -18,6 +18,8 @@ struct ImageFormView: View {
     private var myImages: FetchedResults<MyImage>
     @State private var share = false
     @State private var name = ""
+    @State private var sendMail = false
+    @State private var email = EmailForm()
     
     var body: some View {
         NavigationStack {
@@ -64,16 +66,7 @@ struct ImageFormView: View {
                     }
                     Button {
                         if viewModel.updating {
-                            if let id = viewModel.id,
-                               let selectedImage = myImages.first(where: {$0.id == id}) {
-                                selectedImage.name = viewModel.name
-                                selectedImage.comment = viewModel.comment
-                                selectedImage.dateTaken = viewModel.date
-                                FileManager().saveImage(with: id, image: viewModel.uiImage)
-                                if moc.hasChanges {
-                                    try? moc.save()
-                                }
-                            }
+                            updateImage()
                         } else {
                             let newImage = MyImage(context: moc)
                             newImage.name = viewModel.name
@@ -121,6 +114,7 @@ struct ImageFormView: View {
                             .buttonStyle(.borderedProminent)
                             .tint(.red)
                             Button {
+                                updateImage()
                                 share.toggle()
                             } label: {
                                 Image(systemName: "square.and.arrow.up")
@@ -148,14 +142,50 @@ struct ImageFormView: View {
                                                         name: viewModel.name,
                                                         receivedFrom: viewModel.receivedFrom)
                         shareService.saveMyImage(codableImage)
+                        email.messageHeader = "Sent from the My Images CD app"
+                        email.fileName = "\(id).\(SharedService.ext)"
+                        email.mimeType = "aplication/zip"
+                        let attachmentURL = URL.documentsDirectory.appending(path: email.fileName)
+                        if let data = try? Data(contentsOf: attachmentURL) {
+                            email.data = data
+                        }
+                        if MailView.canSendMail {
+                            sendMail.toggle()
+                        } else {
+                            myLogger.error("This device does not support email")
+                            dismiss()
+                        }
+                        try? FileManager().removeItem(at: attachmentURL)
                     }
-                    dismiss()
                 }
                 Button("Cancel", role: .cancel) { }
             } message: {
                 Text("Please enter your name")
             }
+            .sheet(isPresented: $sendMail) {
+                MailView(mailForm: $email) { result in
+                    switch result {
+                    case .failure(let error):
+                        myLogger.error("Could not send email with error: \(error.localizedDescription)")
+                    case .success:
+                        myLogger.info("Email sent")
+                    }
+                    dismiss()
+                }
+            }
+        }
+    }
 
+    fileprivate func updateImage() {
+        if let id = viewModel.id,
+           let selectedImage = myImages.first(where: {$0.id == id}) {
+            selectedImage.name = viewModel.name
+            selectedImage.comment = viewModel.comment
+            selectedImage.dateTaken = viewModel.date
+            FileManager().saveImage(with: id, image: viewModel.uiImage)
+            if moc.hasChanges {
+                try? moc.save()
+            }
         }
     }
 }
